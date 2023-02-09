@@ -39,6 +39,17 @@ var content = document.querySelector(".content");
 var tabsArray = [];
 var activeTab = 0;
 
+var createProducts = () => {
+  var cards = "";
+  products.forEach((product) => {
+    if (product.categoryId === activeTab + 1) {
+      cards += createProduct(product.productName);
+    }
+  });
+
+  content.innerHTML = cards;
+};
+
 var createTab = (number) => {
   var tab = document.createElement("li");
   tab.classList.add("tabs__item");
@@ -50,7 +61,7 @@ var createTab = (number) => {
     tab.classList.add("tabs__item--active");
     tabsArray[activeTab].classList.remove("tabs__item--active");
     activeTab = number;
-    console.log(activeTab);
+    createProducts();
   });
 
   return tab;
@@ -66,8 +77,6 @@ var createProduct = (title) => {
 };
 
 (function () {
-  var cards = "";
-
   for (var i = 0; i < categoriesCount; i++) {
     var tab = createTab(i);
     tabsArray.push(tab);
@@ -75,11 +84,5 @@ var createProduct = (title) => {
     tabs.insertAdjacentElement("beforeend", tab);
   }
 
-  products.forEach((product) => {
-    if (product.categoryId === activeTab + 1) {
-      cards += createProduct(product.productName);
-    }
-  });
-
-  content.innerHTML = cards;
+  createProducts();
 })();
