@@ -6,12 +6,19 @@
 body {
   font-family: sans-serif;
   background-color: #f5f5f5;
+  margin: 0;
 }
 
 ul {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.container {
+  max-width: 992px;
+  padding: 50px 20px;
+  margin: auto;
 }
 
 .tabs {
@@ -27,6 +34,7 @@ ul {
 }
 
 .tabs__item {
+  font-size: 16px;
   background-color: #e8e8e8;
   border: 2px solid #888888;
   border-bottom: none;
@@ -43,12 +51,11 @@ ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-column-gap: 40px;
+          column-gap: 40px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  width: 780px;
+  width: inherit;
   min-height: 400px;
   background-color: #fff;
   border: 2px solid #888888;
@@ -71,5 +78,43 @@ ul {
 .content__image {
   width: 120px;
   height: 120px;
+}
+
+@media screen and (max-width: 676px) {
+  .tabs {
+    -webkit-column-gap: 8px;
+            column-gap: 8px;
+  }
+  .tabs__item {
+    padding: 5px 9px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .tabs {
+    -webkit-column-gap: 5px;
+            column-gap: 5px;
+    padding: 0 4px 0 4px;
+  }
+  .tabs__item {
+    font-size: 12px;
+  }
+  .content {
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .tabs__item {
+    max-width: 50px;
+    overflow: hidden;
+    padding: 2px;
+  }
+  .content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 /*# sourceMappingURL=style.css.map */
